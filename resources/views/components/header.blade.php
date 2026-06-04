@@ -10,7 +10,7 @@
   <div class="absolute inset-0 -z-10 bg-gray-900/70" aria-hidden="true"></div>
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-5xl">{{ $title }}</h2>
+      <h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{{ $title }}</h1>
       <p class="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">{{ $description }}</p>
     </div>
   </div>

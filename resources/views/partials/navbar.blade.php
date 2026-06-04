@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header class="sticky inset-x-0 top-0 z-50 transition-all duration-300 shadow-sm backdrop-blur-md bg-white/80">
+<header class="sticky inset-x-0 top-0 z-50 transition-all duration-300 shadow-sm backdrop-blur-md bg-white/80">
     <nav aria-label="Global" class="flex items-center justify-between p-3 lg:px-15">
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5 pl-10">
@@ -25,7 +17,7 @@
       <div class="hidden lg:flex lg:gap-x-12">
         <a href="{{ url('/') }}" class="text-base/7 font-normal  text-gray-900"><h5>Beranda</h5></a>
         <a href="{{ url('/kegiatan') }}" class="text-base/7 font-normal  text-gray-900"><h5>Kegiatan</h5></a>
-        <a href="{{ url('/about') }}" class="text-base/7 font-normal  text-gray-900"><h5>Tentang</h5></a>
+        <a href="{{ url('/about') }}" class="text-base/7 font-normal  text-gray-900"><h5>Tentang Kami</h5></a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <a href="#" class="rounded-full inline-flex gap-2 px-3 py-2 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-auto focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
@@ -55,9 +47,9 @@
             <div class="mt-6 flow-root">
               <div class="-my-6 divide-y divide-gray-500/10">
                 <div class="space-y-2 py-6 text-center">
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Beranda</a>
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Kegiatan</a>
-                  <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Tentang Kami</a>
+                  <a href="{{ url('/') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Beranda</a>
+                  <a href="{{ url('/kegiatan') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Kegiatan</a>
+                  <a href="{{ url('/about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Tentang Kami</a>
                 </div>
                 <div class="py-6 text-center">
                     <a href="#" class="-mx-3 rounded-full inline-flex gap-2 px-3 py-2.5 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-full focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
@@ -73,6 +65,4 @@
         </div>
       </dialog>
     </el-dialog>
-  </header>
-</body>
-</html>
+</header>

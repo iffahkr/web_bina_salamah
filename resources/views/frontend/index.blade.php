@@ -37,9 +37,9 @@
         <div class="absolute inset-0 bg-black/40"></div>
         <!-- Content -->
         <div class="relative pt-70 z-10 items-center flex flex-col text-center justify-between mx-auto max-w-7xl px-6 lg:text-left lg:flex-row lg:px-8">
-            <h1 class="text-3xl font-semibold tracking-normal leading-12 text-balance text-white sm:text-4xl">Memelihara Yatim dan Dhuafa adalah Tanggung Jawab Kami</h1>
+            <h1 class="text-3xl font-semibold tracking-normal leading-12 text-balance text-white sm:text-4xl">Memelihara Yatim dan Dhuafa adalah Tanggung Jawab Kita</h1>
             <div class="flex flex-col items-start justify-center gap-x-6">
-                <p class="mt-8 text-medium font-small text-pretty text-white sm:text-xl/7">Kami berdedikasi untuk melayani siapa saja bagi yang membutuhkan khususnya kepada yatim dan dhuafa.</p>
+                <p class="mt-8 text-medium font-small text-pretty text-white sm:text-xl/7">Yayasan Bina Salamah mendampingi anak yatim dan dhuafa melalui santunan dan pembinaan sejak tahun 2006.</p>
                 <div class="mt-10 items-center justify-center gap-x-6">
                     <a href={{ url('/about') }} class="rounded-full px-3.5 py-3 text-center text-sm font-normal text-amber-100 hover:text-gray-900 outline-1 outline-yellow-300/50 hover:bg-yellow-300/50  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Lihat selengkapnya <span aria-hidden="true">→</span></a>
                 </div>
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Profile -->
-    <div class="relative mx-auto max-w-7xl px-6 lg:px-8 py-25">
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-8 py-15">
         <div aria-hidden="true" class="absolute inset-x-10 -top-100 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
             <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative right-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-blue-300 to-yellow-300 opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"></div>
         </div>
@@ -99,12 +99,11 @@
                     <span class="inline-flex items-center rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700">
                         Tentang Kami
                     </span>
-                    <h2 class="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Membangun Harapan Bersama
+                    <h2 class="mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
+                        Berawal dari Sebuah Kepedulian
                     </h2>
-                    <p class="mt-4 text-medium font-small leading-5 text-center text-gray-600 sm:text-xl/7">
-                        Yayasan kami berkomitmen mendukung pendidikan, kepedulian sosial,
-                        dan masa depan anak-anak yatim serta dhuafa.
+                    <p class="mt-4 text-medium font-small leading-5 text-center text-gray-600 sm:text-lg/7">
+                        Kami menjadi jalan bagi mereka yang ingin berbagi, dan menjadi harapan bagi mereka yang membutuhkan.
                     </p>
                 </div>
                 <!-- Content -->
@@ -122,12 +121,9 @@
                             Yayasan Bina Salamah
                         </h3>
                         <p class="mt-5 text-justify leading-8 text-gray-600">
-                            Yayasan Bina Salamah adalah yayasan pendidikan dan sosial
-                            yang berkomitmen untuk melayani anak-anak yatim dan dhuafa.
-                            Berdiri sejak tahun 2010 hingga saat ini, kami terus
-                            berusaha memberikan kontribusi positif bagi masyarakat
-                            melalui pendidikan, pembinaan, dan kegiatan sosial yang
-                            bermanfaat.
+                            Yayasan Bina Salamah adalah yayasan pendidikan dan pengembangan sosial
+                            yang berkomitmen sejak tahun 2009 untuk melayani anak-anak yatim dan dhuafa.
+                            Berawal dari keinginan membantu anak yatim di lingkungan sekitar, Yayasan Bina Salamah terus tumbuh menjadi ruang berbagi, membina, dan menebarkan manfaat.
                         </p>
                         <div class="z-30 mt-10 items-center justify-center gap-x-6">
                             <a href={{ url('/about') }} class="rounded-full px-3.5 py-3 text-center text-sm font-normal text-black focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-900">Lihat selengkapnya <span aria-hidden="true">→</span></a>
@@ -143,11 +139,11 @@
         <div aria-hidden="true" class="absolute inset-x-10 -bottom-70 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-70">
             <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-yellow-200 to-white sm:left-[calc(50%-30rem)] sm:w-288.75"></div>
         </div>
-        <div class="px-10 py-6 sm:py-6 lg:py-6">
+        <div class="px-10 py-6 sm:py-6">
             <div class="justify-between">
-                <h2 class="text-3xl font-bold tracking-tight leading-12 text-balance text-gray-900 sm:text-4xl">Kegiatan Kami</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight leading-12 text-balance text-gray-900">Program Kebaikan Kami</h2>
                 <div class="items-start justify-center gap-x-6 sm:mr-20">
-                    <p class="mt-5 text-medium font-small leading-5 text-pretty text-gray-600 sm:text-lg/7">Kami mendapatkan bantuan dari berbagai pihak donatur. Berikut ini adalah statistik sementara dari data donatur dan donasi kami selama satu bulan terakhir serta kegiatan yang telah kami lakukan secara rutin.</p>
+                    <p class="mt-5 text-medium font-small leading-5 text-pretty text-gray-600 sm:text-lg/7">Bantuan yang terbaik bukan hanya memenuhi kebutuhan hari ini, tetapi juga membangun masa depan mereka yang lebih baik. Dalam mewujudkan hal ini, kami memiliki 6 program aktif diantaranya.</p>
                 </div>
             </div>
         </div>
@@ -198,6 +194,9 @@
         <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-blue-300 to-yellow-300 opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"></div>
         </div>
     </div>
+
+    <!-- CTA Footer -->
+     @include('components.cta-footer')
 </div>
 @include('partials.footer')
 
