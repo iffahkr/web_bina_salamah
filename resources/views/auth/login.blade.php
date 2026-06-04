@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <h5 class="text-xl text-center mb-2 font-bold text-gray-800">Masuk sebagai Admin</h5>
+    <p class="text-center mb-5 text-gray-600">Silakan masuk dengan akun admin yang telah terdaftar</p>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -8,18 +10,17 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block w-full" type="email" name="email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block  w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -32,16 +33,19 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
+        <div class="flex flex-col items-center justify-end mt-4">
+            <x-primary-button class="ms-3 px-35">
                 {{ __('Log in') }}
             </x-primary-button>
+
+            <div class="mt-3 flex flex-row">
+                @if (Route::has('password.request'))
+                <p class="text-sm text-gray-600">Don't have an account yet?</p>
+                <a class="ml-1 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ url('/register') }}">
+                    Register here
+                </a>
+            @endif
+            </div>
         </div>
     </form>
 </x-guest-layout>
