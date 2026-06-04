@@ -27,7 +27,7 @@
         <div class="gap-4">
 
             {{-- Number --}}
-            <div class="rounded-2xl bg-slate-50 px-auto p-2 mx-auto transition duration-300 group-hover:bg-blue-50">
+            <div class="rounded-2xl px-auto p-2 mx-auto transition duration-300">
                 <p class="text-center mx-auto mt-2 text-4xl font-bold text-slate-800">
                     <span x-text="formattedDonors">{{ $number }}</span>
                 </p>

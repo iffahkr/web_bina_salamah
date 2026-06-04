@@ -117,7 +117,7 @@
                             class="relative z-10 h-80 w-80 rounded-4xl object-cover shadow-2xl ring-3 ring-white sm:h-105 sm:w-105"
                         >
                     </div>
-                    <div class="max-w-xl rounded-4xl bg-white/70 p-8 shadow-xl ring-1 ring-gray-200 backdrop-blur-md">
+                    <div class="z-20 max-w-xl rounded-4xl bg-white/70 p-8 shadow-xl ring-1 ring-gray-200 backdrop-blur-md">
                         <h3 class="text-2xl font-semibold text-gray-900">
                             Yayasan Bina Salamah
                         </h3>
@@ -129,16 +129,8 @@
                             melalui pendidikan, pembinaan, dan kegiatan sosial yang
                             bermanfaat.
                         </p>
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <span class="rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
-                                Pendidikan
-                            </span>
-                            <span class="rounded-full bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700">
-                                Sosial
-                            </span>
-                            <span class="rounded-full bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700">
-                                Kepedulian
-                            </span>
+                        <div class="z-30 mt-10 items-center justify-center gap-x-6">
+                            <a href={{ url('/about') }} class="rounded-full px-3.5 py-3 text-center text-sm font-normal text-black focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-900">Lihat selengkapnya <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
                 </div>
