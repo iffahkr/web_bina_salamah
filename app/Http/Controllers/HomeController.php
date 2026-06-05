@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\ActivityCategory;
 use App\Models\Donation;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index() {
-        $activities = Activity::with('category')->get();
+        $activities = ActivityCategory::all();
         $donations = Donation::with('category')->get();
 
-        return view('frontend.home', compact('activities', 'donations'));
+        return view('frontend.index', compact('activities', 'donations'));
     }
 }

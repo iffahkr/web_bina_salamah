@@ -1,13 +1,13 @@
 @props([
     'title' => 'Program Donasi',
     'description' => 'Deskripsi program donasi.',
-    'image' => null,
+    'image' => asset('images/image-hero.jpeg'),
     'kegiatan' => 'Kegiatan Rutin',
-    'link' => '#',
+    'href' => '#',
 ])
 
 <a
-    href="{{ $link }}"
+    href="{{ $href }}"
     {{ $attributes->merge([
         'class' => 'group block overflow-hidden rounded-[28px] border border-slate-200/70 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-100'
     ]) }}
@@ -35,9 +35,9 @@
     <div class="space-y-5 p-6">
         {{-- Title --}}
         <div>
-            <h3 class="text-xl font-bold leading-snug text-slate-800 transition group-hover:text-blue-700">
+            <p class="text-lg font-semibold leading-snug text-slate-800 transition group-hover:text-blue-700">
                 {{ $title }}
-            </h3>
+            </p>
             <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
                 {{ $description }}
             </p>

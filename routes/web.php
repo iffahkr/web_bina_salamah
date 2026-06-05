@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ActivityHomeController;
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/info/{id}', [ActivityHomeController::class, 'show'])->name('activity.show');
 
 Route::get('/kegiatan', function () {
     return view('frontend.activity.index');

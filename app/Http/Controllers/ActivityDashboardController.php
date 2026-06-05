@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class ActivityController extends Controller
+class ActivityDashboardController extends Controller
 {
     public function index()
     {
@@ -80,7 +80,7 @@ class ActivityController extends Controller
             if ($activity->image) {
                 Storage::disk('public')->delete(paths: 'activities/' . $activity->image);
             }
-            
+
             $activity->image = $image_path->hashName();
         }
 

@@ -10,7 +10,7 @@ class ActivityController extends Controller
     {
         return view('home');
     }
-    
+
     public function update(Request $request, $id)
     {
         //
@@ -18,7 +18,7 @@ class ActivityController extends Controller
 
     public function show($id)
     {
-        return view('home');
+        //
     }
 
 }
