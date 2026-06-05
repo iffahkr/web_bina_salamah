@@ -28,7 +28,7 @@
             </div>
             <!-- Buttons -->
             <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a href="#"
+                <a href="https://wa.me/6281294162019"
                    class="group flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 font-semibold text-yellow-300 transition-all duration-300 hover:scale-105 hover:bg-slate-800">
                     <span>Donasi Sekarang</span>
                     <svg xmlns="http://www.w3.org/2000/svg"

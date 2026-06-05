@@ -8,7 +8,7 @@ class ActivityHomeController extends Controller
 {
     public function show($id)
     {
-        $activity = ActivityCategory::findOrFail($id);
-        return view('frontend.activity.info', ['activity' => $activity]);
+        $info = ActivityCategory::findOrFail($id);
+        return view('frontend.info', ['info' => $info]);
     }
 }

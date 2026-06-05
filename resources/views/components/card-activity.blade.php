@@ -19,10 +19,8 @@
             alt="{{ $title }}"
             class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
         >
-
         {{-- Overlay --}}
         <div class="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent"></div>
-
         {{-- Badge --}}
         <div class="absolute left-4 top-4">
             <span class="rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-blue-700 backdrop-blur-sm">
@@ -30,7 +28,6 @@
             </span>
         </div>
     </div>
-
     {{-- Content --}}
     <div class="space-y-5 p-6">
         {{-- Title --}}

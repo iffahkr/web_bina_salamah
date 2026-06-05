@@ -17,18 +17,17 @@
 
     <div class="max-w-7xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden
-            transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <img src="{{ asset('images/image-hero.jpeg') }}" alt="Kegiatan 1" class="w-full h-48 object-cover">
-                <div class="flex items-center px-4 py-2 text-xs text-gray-500 bg-gray-50">
-                    <span>Admin</span>
-                    <span class="ml-auto">10 Januari 2024</span>
-                </div>
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold mb-2 line-clamp-2">Pembagian Sembako</h2>
-                    <p class="text-gray-600 line-clamp-3 mr-4">Kami membagikan sembako kepada keluarga yatim dan dhuafa di sekitar kami. kami adalah manusakfneaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaad ifoeffffffffffffffffffffffffffff</p>
-                </div>
-            </div>
+            @foreach($activities as $activity)
+                <x-card-news
+                    title="{{ $activity->title }}"
+                    description="{{ $activity->description }}"
+                    location="{{ $activity->location }}"
+                    date="{{ $activity->date ? \Carbon\Carbon::parse($activity->date)->format('d M Y') : 'Tanggal tidak tersedia' }}"
+                    time="{{ $activity->time }}"
+                    image="{{ asset('storage/activities/' . $activity->image) ?? asset('images/image-hero.jpeg') }}"
+                    href="{{ route('activity.show', $activity->id) }}"
+                />
+            @endforeach
         </div>
     </div>
     @include('partials.footer')

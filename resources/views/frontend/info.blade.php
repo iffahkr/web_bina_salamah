@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $activity->name }} | Yayasan Bina Salamah</title>
+    <title>{{ $info->name }} | Yayasan Bina Salamah</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -12,7 +12,7 @@
 @include('partials.navbar')
 
 <!-- Hero -->
-<section class="relative overflow-hidden pt-32 pb-20">
+<section class="relative overflow-hidden pt-16 pb-16">
     <div aria-hidden="true"
         class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl">
         <div
@@ -20,29 +20,24 @@
         </div>
     </div>
 
-    <div class="mx-auto max-w-5xl px-6 text-center">
+    <div class="mx-auto max-w-5xl px-6">
 
-        @if($activity->category)
+        @if($info->category)
             <span
-                class="inline-flex items-center rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700">
-                {{ $activity->category }}
+                class="inline-flex rounded-full items-center bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700">
+                {{ $info->category }}
             </span>
         @endif
 
-        <h1 class="mt-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            {{ $activity->name }}
+        <h1 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            {{ $info->name }}
         </h1>
-
-        <p class="mt-5 text-lg leading-8 text-gray-600">
-            Program kegiatan Yayasan Bina Salamah dalam mendukung dan
-            membina anak-anak yatim serta dhuafa.
-        </p>
     </div>
 </section>
 
 <!-- Content -->
-<section class="pb-24">
-    <div class="mx-auto max-w-6xl px-6">
+<section class="pb-24 pt-12">
+    <div class="max-w-5xl px-6 mx-auto">
 
         <!-- Image -->
         <div class="relative">
@@ -51,10 +46,10 @@
             </div>
 
             <img
-                src="{{ $activity->image
-                    ? asset('storage/' . $activity->image)
+                src="{{ $info->image
+                    ? asset('storage/activities/' . $info->image)
                     : asset('images/image-hero.jpeg') }}"
-                alt="{{ $activity->name }}"
+                alt="{{ $info->name }}"
                 class="relative z-10 h-125 w-full rounded-4xl object-cover shadow-2xl">
         </div>
 
@@ -62,12 +57,12 @@
         <div
             class="mt-12 rounded-4xl bg-white p-8 shadow-lg ring-1 ring-gray-100 sm:p-12">
 
-            <h2 class="text-2xl font-semibold text-gray-900">
+            <h2 class="text-xl font-semibold text-gray-900">
                 Deskripsi Kegiatan
             </h2>
 
             <div class="mt-6 text-justify leading-8 text-gray-600">
-                {!! nl2br(e($activity->description)) !!}
+                {{ $info->description }}
             </div>
         </div>
 

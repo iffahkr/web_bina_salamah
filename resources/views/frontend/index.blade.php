@@ -150,13 +150,13 @@
         <div class="mx-auto my-4 max-w-7xl py-7 lg:px-5
             grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
             gap-6">
-            @forelse($activities as $activity)
+            @forelse($informations as $info)
                 <x-card-activity
-                    title="{{ $activity->name }}"
-                    description="{{ $activity->description }}"
-                    image="{{ $activity->image ? asset('storage/' . $activity->image) : asset('images/image-hero.jpeg') }}"
-                    href="{{ route('activity.show', $activity->id) }}"
-                    :kegiatan="$activity->category?->name ?? 'Kegiatan Rutin'"
+                    title="{{ $info->name }}"
+                    description="{{ $info->description }}"
+                    image="{{ $info->image ? asset('storage/activities/' . $info->image) : asset('images/image-hero.jpeg') }}"
+                    href="{{ route('info.show', $info->id) }}"
+                    :kegiatan="$info->category ?? 'Kegiatan Rutin'"
                 />
             @empty
                 <p class="col-span-full text-center text-gray-500">Tidak ada kegiatan yang tersedia.</p>

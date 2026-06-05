@@ -1,24 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Models\Activity;
 
 class ActivityController extends Controller
 {
+
     public function index()
     {
-        return view('home');
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
+        $activities = Activity::all();
+        return view('frontend.activity.index', compact('activities'));
     }
 
     public function show($id)
     {
-        //
+        $activity = Activity::findOrFail($id);
+        return view('frontend.activity.activity', ['activity' => $activity]);
     }
 
 }
