@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\ActivityCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -11,19 +13,15 @@ class ActivityController extends Controller
 {
     public function index()
     {
-        $activity = Activity::with('category')->get();
+        $activities = Activity::with('category')->get();
+        $categories = ActivityCategory::all();
 
-        if ($activity->isEmpty()) {
-            return view('blank');
-        }
-
-        return view('admin.activity', compact('activity'));
+        return view('admin.activity', compact('activities', 'categories'));
     }
 
     public function store(Request $request)
     {
-        $validate = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'location' => 'required|string|max:255',
@@ -33,93 +31,85 @@ class ActivityController extends Controller
             'activity_category_id' => 'required|exists:activity_categories,id',
         ]);
 
-        if ($validate->fails()) {
-            return view('blank');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $image_path = $request->file('image')->store('activities', 'public');
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+        $image->storeAs('activities', $imageName, 'public');
 
-        $activity = Activity::create([
-            'name' => $request->name,
+        Activity::create([
             'title' => $request->title,
             'description' => $request->description,
             'location' => $request->location,
             'date' => $request->date,
             'time' => $request->time,
-            'image' => $image_path->hashName(),
+            'image' => $imageName,
             'activity_category_id' => $request->activity_category_id,
         ]);
 
-        return view('admin.activity', compact('activity'));
+        return redirect()->route('admin.activities.index')->with('success', 'Activity created successfully.');
     }
 
     public function update(Request $request, string $id)
     {
         $activity = Activity::findOrFail($id);
-        if (!$activity) {
-            return view('blank');
-        }
 
-        $validate = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string',
             'location' => 'required|string|max:255',
             'date' => 'required|date',
-            'time' => 'required|time',
+            'time' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'activity_category_id' => 'required|exists:activity_categories,id',
         ]);
 
-        if ($validate->fails()) {
-            return view('blank');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         if ($request->hasFile('image')) {
-            $image_path = $request->file('image')->store('activities', 'public');
+            $image = $request->file('image');
+            $imageName = $image->hashName();
+            $image->storeAs('activities', $imageName, 'public');
+
             if ($activity->image) {
-                Storage::disk('public')->delete(paths: 'activities/' . $activity->image);
+                Storage::disk('public')->delete('activities/' . $activity->image);
             }
-            
-            $activity->image = $image_path->hashName();
+
+            $activity->image = $imageName;
         }
 
         $activity->update([
-            'name' => $request->name,
             'title' => $request->title,
             'description' => $request->description,
             'location' => $request->location,
             'date' => $request->date,
             'time' => $request->time,
             'activity_category_id' => $request->activity_category_id,
-         ]);
+        ]);
 
-         return view('admin.activity', compact('activity'));
+        return redirect()->route('admin.activities.index')->with('success', 'Activity updated successfully.');
     }
 
     public function show(string $id)
     {
         $activity = Activity::findOrFail($id);
-        if (!$activity) {
-            return view('blank');
-        }
-
-        return view('admin.activity', compact('activity'));
+        return response()->json($activity);
     }
 
     public function destroy(string $id)
     {
         $activity = Activity::findOrFail($id);
-        if (!$activity) {
-            return view('blank');
-        }
 
         if ($activity->image) {
-            Storage::disk('public')->delete(paths: 'activities/' . $activity->image);
+            Storage::disk('public')->delete('activities/' . $activity->image);
         }
 
         $activity->delete();
 
-        return view('admin.activity', compact('activity'));
+        return redirect()->route('admin.activities.index')->with('success', 'Activity deleted successfully.');
     }
 }

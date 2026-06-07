@@ -6,9 +6,10 @@
     <title>Yayasan Bina Salamah</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
 </head>
 <body>
-@include('partials.navbar')
+@include('components.navbar')
 <div class="bg-white">
     <!-- Carousel -->
     <section class="relative h-screen overflow-hidden">
@@ -54,22 +55,22 @@
             </div>
         <div class="-mt-40 z-10 flex flex-wrap mx-auto justify-center max-w-7xl py-7 lg:px-5 sm:flex-row gap-2">
             <x-card-stats
-            title="Donatur Sementara"
-            number="4">
+            title="Donatur Aktif"
+            :number="$totalDonators">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-10 size-20 text-center mx-auto text-blue-700/50">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                 </svg>
             </x-card-stats>
             <x-card-stats
             title="Donasi Terkumpul"
-            number="10000000">
+            :number="$totalAmount">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-10 size-20 text-center mx-auto text-blue-700/50">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
                 </svg>
             </x-card-stats>
             <x-card-stats
-            title="Penerima Manfaat"
-            number="40">
+            title="Program Yayasan"
+            :number="$totalCategories">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-10 size-20 text-center mx-auto text-blue-700/50">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>
@@ -150,45 +151,17 @@
         <div class="mx-auto my-4 max-w-7xl py-7 lg:px-5
             grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
             gap-6">
-            <x-card-activity
-            title="Pengajian Ibu Yatim"
-            description="lorem ipsum dolor sit amet"
-            image="{{ asset('images/image-hero.jpeg') }}"
-            href="{{ url('/activity/activity') }}"
-            />
-            <x-card-activity
-            title="Santunan Anak Yatim"
-            description="lorem ipsum dolor sit amet"
-            image="{{ asset('images/santunan.jpg') }}"
-            href="{{ url('/activity/activity') }}"
-            />
-            <x-card-activity
-            title="Qurban Idul Adha"
-            description="Lorem ipsum dolor sit amet"
-            image="{{ asset('images/qurban.jpeg') }}"
-            href="{{ url('/activity/activity') }}"
-            />
-            <x-card-activity
-            title="Rihlah"
-            description="Lorem ipsum dolor sit amet"
-            image="{{ asset('images/rihlah.jpg') }}"
-            href="{{ url('/activity/activity') }}"
-            kegiatan="Kegiatan Tahunan"
-            />
-            <x-card-activity
-            title="Pengajian Anak Yatim"
-            description="Lorem ipsum dolor sit amet"
-            image="{{ asset('images/pengajian-anak.jpg') }}"
-            href="{{ url('/activity/activity') }}"
-            kegiatan="Kegiatan Dijadwalkan"
-            />
-            <x-card-activity
-            title="Pelatihan Al-Qur'an"
-            description="Lorem ipsum dolor sit amet"
-            image="{{ asset('images/pelatihan.jpeg') }}"
-            href="{{ url('/activity/activity') }}"
-            kegiatan="Kegiatan Musiman"
-            />
+            @forelse($informations as $info)
+                <x-card-activity
+                    title="{{ $info->name }}"
+                    description="{{ $info->description }}"
+                    image="{{ $info->image ? asset('storage/activities/' . $info->image) : asset('images/image-hero.jpeg') }}"
+                    href="{{ route('info.show', $info->id) }}"
+                    :kegiatan="$info->category ?? 'Kegiatan Rutin'"
+                />
+            @empty
+                <p class="col-span-full text-center text-gray-500">Tidak ada kegiatan yang tersedia.</p>
+            @endforelse
         </div>
         <div aria-hidden="true" class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
         <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-blue-300 to-yellow-300 opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"></div>
@@ -198,7 +171,7 @@
     <!-- CTA Footer -->
      @include('components.cta-footer')
 </div>
-@include('partials.footer')
+@include('components.footer')
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

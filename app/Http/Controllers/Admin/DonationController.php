@@ -1,87 +1,91 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Donation;
+use App\Models\DonationCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class DonationController extends Controller
 {
-    public function index() {
-        $donation = Donation::with('category')->get();
+    public function index()
+    {
+        $donations = Donation::with('category')->get();
+        $categories = DonationCategory::all();
 
-        if ($donation->isEmpty()) {
-            return view('blank');
-        }
-
-        return view('admin.donation', compact('donation'));
+        return view('admin.donation', compact('donations', 'categories'));
     }
 
-    public function store(Request $request) {
-        $validate = Validator::make($request->all(), [
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|integer|digits_between:10,15',
-            'amount' => 'required|integer',
+            'phone_number' => 'required|string|max:15',
+            'amount' => 'required|integer|min:1',
             'payment_method' => 'required|string|max:255',
             'date' => 'required|date',
-            'time' => 'required|time',
+            'time' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'notes' => 'required|string|max:255',
+            'notes' => 'nullable|string|max:255',
             'donation_category_id' => 'required|exists:donation_categories,id',
         ]);
-        if ($validate->fails()) {
-            return view('blank');
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $image_path = $request->file('image')->store('donations', 'public');
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+        $image->storeAs('donations', $imageName, 'public');
 
-        $donation = Donation::create([
+        Donation::create([
             'name' => $request->name,
             'phone_number' => $request->phone_number,
             'amount' => $request->amount,
             'payment_method' => $request->payment_method,
             'date' => $request->date,
             'time' => $request->time,
-            'image' => $request->file('image')->hashName(),
+            'image' => $imageName,
             'notes' => $request->notes,
             'donation_category_id' => $request->donation_category_id,
         ]);
 
-        return view('admin.donation', compact('donation'));
+        return redirect()->route('admin.donations.index')->with('success', 'Donation recorded successfully.');
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, string $id)
+    {
         $donation = Donation::findOrFail($id);
-        if (!$donation) {
-            return view('blank');
-        }
 
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|integer|digits_between:10,15',
-            'amount' => 'required|integer',
+            'phone_number' => 'required|string|max:15',
+            'amount' => 'required|integer|min:1',
             'payment_method' => 'required|string|max:255',
             'date' => 'required|date',
-            'time' => 'required|time',
+            'time' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'notes' => 'required|string|max:255',
+            'notes' => 'nullable|string|max:255',
             'donation_category_id' => 'required|exists:donation_categories,id',
         ]);
 
-        if ($validate->fails()) {
-            return view('blank');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         if ($request->hasFile('image')) {
-            $image_path = $request->file('image')->store('donations', 'public');
+            $image = $request->file('image');
+            $imageName = $image->hashName();
+            $image->storeAs('donations', $imageName, 'public');
 
             if ($donation->image) {
-                Storage::disk('public')->delete(paths: 'donations/' . $donation->image);
+                Storage::disk('public')->delete('donations/' . $donation->image);
             }
 
-            $donation->image = $image_path->hashName();
+            $donation->image = $imageName;
         }
 
         $donation->update([
@@ -95,30 +99,25 @@ class DonationController extends Controller
             'donation_category_id' => $request->donation_category_id,
         ]);
 
-
-        return view('admin.donation', compact('donation'));
+        return redirect()->route('admin.donations.index')->with('success', 'Donation updated successfully.');
     }
 
-    public function show(string $id) {
+    public function show(string $id)
+    {
         $donation = Donation::findOrFail($id);
-        if (!$donation) {
-            return view('blank');
-        }
-
-        return view('admin.donation', compact('donation'));
+        return response()->json($donation);
     }
 
-    public function destroy(string $id) {
+    public function destroy(string $id)
+    {
         $donation = Donation::findOrFail($id);
-        if (!$donation) {
-            return view('blank');
-        }
 
         if ($donation->image) {
-            Storage::disk('public')->delete(paths: 'donations/' . $donation->image);
+            Storage::disk('public')->delete('donations/' . $donation->image);
         }
 
         $donation->delete();
-        return view('admin.donation', compact('donation'));
+
+        return redirect()->route('admin.donations.index')->with('success', 'Donation deleted successfully.');
     }
 }

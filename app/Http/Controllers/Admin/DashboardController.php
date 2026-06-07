@@ -1,17 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Donation;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() {
-        $activities = Activity::with('category')->get();
-        $donations = Donation::with('category')->get();
+    public function index()
+    {
+        $totalDonationFund = Donation::sum('amount');
+        $totalDonators = Donation::count();
+        $totalActivities = Activity::count();
 
-        return view('admin.dashboard', compact('activities', 'donations'));
+        $recentActivities = Activity::with('category')->latest()->take(5)->get();
+        $recentDonations = Donation::with('category')->latest()->take(5)->get();
+
+        return view('admin.dashboard', compact(
+            'totalDonationFund',
+            'totalDonators',
+            'totalActivities',
+            'recentActivities',
+            'recentDonations'
+        ));
     }
 }

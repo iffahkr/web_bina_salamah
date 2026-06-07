@@ -38,7 +38,7 @@ class ActivitySeeder extends Seeder
             'location' => 'Kantor Pajak Sawangan, Jl. Raya Siliwangi, Depok',
             'date' => '2026-05-02',
             'time' => '15:00',
-            'image' => 'santunan_yatim_pajak.jpg',
+            'image' => 'santunan-kantor-pajak.jpg',
             'activity_category_id' => 2, // Assuming this ID corresponds to 'Santunan' in the ActivityCategorySeeder
         ]);
     }

@@ -1,80 +1,93 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\ActivityCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ActivityCategoryController extends Controller
 {
     public function index() {
-        $categories = ActivityCategory::all();
-
-        if ($categories->isEmpty()) {
-            return view('blank');
-        }
-
-        return view('admin.activity', compact('categories'));
+        return redirect()->route('admin.activities.index');
     }
 
     public function store(Request $request) {
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-        ]);
+            'category' => 'required|string|max:45',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+          ]);
 
-        if($validate->fails()) {
-            return view('blank');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $category = ActivityCategory::create([
+        $image = $request->file('image');
+        $imageName = $image->hashName();
+        $image->storeAs('activities', $imageName, 'public');
+
+        ActivityCategory::create([
             'name' => $request->name,
             'description' => $request->description,
+            'category' => $request->category,
+            'image' => $imageName,
         ]);
 
-        return view('admin.activity', compact('category'));
+        return redirect()->route('admin.activities.index')->with('success', 'Category created successfully.');
     }
 
     public function update(Request $request, string $id) {
         $category = ActivityCategory::findOrFail($id);
-        if (!$category) {
-            return view('blank');
-        }
 
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
+            'category' => 'required|string|max:45',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        if($validate->fails()) {
-            return view('blank');
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->hashName();
+            $image->storeAs('activities', $imageName, 'public');
+
+            if ($category->image) {
+                Storage::disk('public')->delete('activities/' . $category->image);
+            }
+
+            $category->image = $imageName;
         }
 
         $category->update([
             'name' => $request->name,
             'description' => $request->description,
+            'category' => $request->category,
         ]);
 
-        return view('admin.activity', compact('category'));
+        return redirect()->route('admin.activities.index')->with('success', 'Category updated successfully.');
     }
 
     public function show(string $id) {
-        $categories = ActivityCategory::findOrFail($id);
-        if (!$categories) {
-            return view('blank');
-        }
-
-        return view('admin.activity', compact('categories'));
+        $category = ActivityCategory::findOrFail($id);
+        return response()->json($category);
     }
 
     public function destroy(string $id) {
         $category = ActivityCategory::findOrFail($id);
-        if (!$category) {
-            return view('blank');
+
+        if ($category->image) {
+            Storage::disk('public')->delete('activities/' . $category->image);
         }
 
         $category->delete();
-        return view('admin.activity', compact('category'));
+        return redirect()->route('admin.activities.index')->with('success', 'Category deleted successfully.');
     }
-
 }
