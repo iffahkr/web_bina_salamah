@@ -1,3 +1,8 @@
+@php
+    $message = urlencode(
+    "Assalamu'alaikum. \nPerkenalkan saya [Nama]. Saya tertarik untuk berdonasi dan ingin mengetahui lebih lanjut tentang program yayasan. Apakah saya bisa mendapatkan informasi lebih lanjut?\nTerima kasih."
+    );
+@endphp
 <header class="sticky inset-x-0 top-0 z-50 transition-all duration-300 shadow-sm backdrop-blur-md bg-white/80">
     <nav aria-label="Global" class="flex items-center justify-between p-3 lg:px-15">
       <div class="flex lg:flex-1">
@@ -20,7 +25,7 @@
         <a href="{{ url('/about') }}" class="text-base/7 font-normal  text-gray-900"><h5>Tentang Kami</h5></a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="https://wa.me/6281294162019" class="rounded-full inline-flex gap-2 px-3 py-2 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-auto focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
+        <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank" class="rounded-full inline-flex gap-2 px-3 py-2 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-auto focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
             <span>Donasi sekarang</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rounded-full border p-1 size-7">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -52,7 +57,7 @@
                   <a href="{{ url('/about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Tentang Kami</a>
                 </div>
                 <div class="py-6 text-center">
-                    <a href="#" class="-mx-3 rounded-full inline-flex gap-2 px-3 py-2.5 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-full focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
+                    <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank" class="-mx-3 rounded-full inline-flex gap-2 px-3 py-2.5 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-full focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
                         <span>Donasi sekarang</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rounded-full border p-1 size-7">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />

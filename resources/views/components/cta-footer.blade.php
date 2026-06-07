@@ -27,8 +27,13 @@
                 </div>
             </div>
             <!-- Buttons -->
+             @php
+                $message = urlencode(
+                "Assalamu'alaikum. \nPerkenalkan saya [Nama]. Saya tertarik untuk berdonasi dan ingin mengetahui lebih lanjut tentang program yayasan. Apakah saya bisa mendapatkan informasi lebih lanjut?\nTerima kasih."
+                );
+             @endphp
             <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a href="https://wa.me/6281294162019"
+                <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank"
                    class="group flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 font-semibold text-yellow-300 transition-all duration-300 hover:scale-105 hover:bg-slate-800">
                     <span>Donasi Sekarang</span>
                     <svg xmlns="http://www.w3.org/2000/svg"

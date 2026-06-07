@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kegiatan | Yayasan Bina Salamah</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
 </head>
 <body>
-    @include('partials.navbar')
+    @include('components.navbar')
 
     @include('components.header', [
         'title' => 'Kegiatan Kami',
@@ -30,7 +32,7 @@
             @endforeach
         </div>
     </div>
-    @include('partials.footer')
+    @include('components.footer')
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 </body>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\DonationCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -9,42 +10,37 @@ use Illuminate\Support\Facades\Validator;
 class DonationCategoryController extends Controller
 {
     public function index() {
-        $categories = DonationCategory::all();
-        if ($categories->isEmpty()) {
-            return view('blank');
-        }
-        return view('admin.donation', compact('categories'));
+        return redirect()->route('admin.donations.index');
     }
 
     public function store(Request $request) {
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
         ]);
-        if($validate->fails()) {
-            return view('blank');
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $category = DonationCategory::create([
+        DonationCategory::create([
             'name' => $request->name,
             'description' => $request->description,
         ]);
 
-        return view('admin.donation', compact('category'));
+        return redirect()->route('admin.donations.index')->with('success', 'Category created successfully.');
     }
 
     public function update(Request $request, string $id) {
         $category = DonationCategory::findOrFail($id);
-        if (!$category) {
-            return view('blank');
-        }
 
-        $validate = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
         ]);
-        if($validate->fails()) {
-            return view('blank');
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $category->update([
@@ -52,26 +48,18 @@ class DonationCategoryController extends Controller
             'description' => $request->description,
         ]);
 
-        return view('admin.donation', compact('category'));
+        return redirect()->route('admin.donations.index')->with('success', 'Category updated successfully.');
     }
 
     public function show(string $id) {
         $category = DonationCategory::findOrFail($id);
-        if (!$category) {
-            return view('blank');
-        }
-        
-        return view('admin.donation', compact('category'));
+        return response()->json($category);
     }
 
     public function destroy(string $id) {
         $category = DonationCategory::findOrFail($id);
-        if (!$category) {
-            return view('blank');
-        }
-
         $category->delete();
 
-        return view('admin.donation', compact('category'));
+        return redirect()->route('admin.donations.index')->with('success', 'Category deleted successfully.');
     }
 }

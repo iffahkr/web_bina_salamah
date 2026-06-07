@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $info->name }} | Yayasan Bina Salamah</title>
 
+    <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white">
 
-@include('partials.navbar')
+@include('components.navbar')
 
 <!-- Hero -->
 <section class="relative overflow-hidden pt-16 pb-16">
@@ -91,7 +92,7 @@
     </div>
 </section>
 
-@include('partials.footer')
+@include('components.footer')
 
 </body>
 </html>

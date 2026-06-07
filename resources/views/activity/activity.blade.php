@@ -6,9 +6,11 @@
     <title>{{ $activity->title }} | Yayasan Bina Salamah</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
 </head>
 <body class="bg-white">
-@include('partials.navbar')
+@include('components.navbar')
 <!-- Hero -->
 <section class="relative overflow-hidden pt-10 pb-16">
     <div class="pl-30 max-w-5xl px-6">
@@ -128,6 +130,6 @@
         </div>
     </div>
 </section>
-@include('partials.footer')
+@include('components.footer')
 </body>
 </html>

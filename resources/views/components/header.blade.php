@@ -5,7 +5,7 @@
 ])
 
 
-<div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-20">
+<div class="relative isolate overflow-hidden bg-gray-900 py-20 sm:py-26">
   <img src="{{ $image }}" alt="{{ $title }}" class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" />
   <div class="absolute inset-0 -z-10 bg-gray-900/70" aria-hidden="true"></div>
   <div class="mx-auto max-w-7xl px-6 lg:px-8">

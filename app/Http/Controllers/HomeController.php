@@ -10,7 +10,10 @@ class HomeController extends Controller
     public function index() {
         $informations = ActivityCategory::all();
         $donations = Donation::with('category')->get();
+        $totalDonators = Donation::count();
+        $totalAmount = Donation::sum('amount');
+        $totalCategories = ActivityCategory::count();
 
-        return view('frontend.index', compact('informations', 'donations'));
+        return view('index', compact('informations', 'donations', 'totalDonators', 'totalAmount', 'totalCategories'));
     }
 }
