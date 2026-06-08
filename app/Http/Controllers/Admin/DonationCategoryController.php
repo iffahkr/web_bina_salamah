@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class DonationCategoryController extends Controller
 {
     public function index() {
-        return redirect()->route('admin.donations.index');
+        $categories = DonationCategory::all();
+
+        return view('admin.donation', compact('categories'));
     }
 
     public function store(Request $request) {

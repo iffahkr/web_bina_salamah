@@ -71,7 +71,7 @@
         <div class="mt-12 flex justify-center">
             <a
                 href="{{ url('/') }}"
-                class="inline-flex items-center gap-2 rounded-full bg-yellow-300 px-6 py-3 text-sm font-medium text-gray-900 shadow-md transition hover:bg-amber-300">
+                class="inline-flex items-center gap-2 rounded-full border bg-white border-yellow-200 px-6 py-3 text-sm font-medium text-gray-900 shadow-md transition hover:bg-amber-200">
 
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"

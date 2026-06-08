@@ -1,5 +1,10 @@
+@props([
+'beneficiary' => '40',
+'program' => '0',
+'donator' => '0',
+])
 <section class="relative z-20 -mb-34 py-20 px-6 lg:px-8">
-    <div class="relative overflow-hidden rounded-4xl bg-yellow-600 border border-white/10 shadow-2xl">
+    <div class="relative overflow-hidden rounded-4xl bg-yellow-500 border border-white/10 shadow-2xl">
         <!-- Decorative Blur -->
         <div class="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl"></div>
         <div class="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-yellow-400/15 blur-3xl"></div>
@@ -14,26 +19,21 @@
             <!-- Impact Stats -->
             <div class="mt-10 flex flex-wrap justify-center gap-8 sm:gap-16">
                 <div>
-                    <h3 class="text-3xl font-bold text-white/70">40</h3>
+                    <h3 class="text-3xl font-bold text-white/70">{{ $beneficiary }}</h3>
                     <p class="mt-1 text-sm text-slate-900">Penerima Manfaat</p>
                 </div>
                 <div>
-                    <h3 class="text-3xl font-bold text-white/70">6</h3>
+                    <h3 class="text-3xl font-bold text-white/70">{{ $program }}</h3>
                     <p class="mt-1 text-sm text-slate-900">Program Yayasan</p>
                 </div>
                 <div>
-                    <h3 class="text-3xl font-bold text-white/70">10</h3>
+                    <h3 class="text-3xl font-bold text-white/70">{{ $donator }}</h3>
                     <p class="mt-1 text-sm text-slate-900">Donatur</p>
                 </div>
             </div>
             <!-- Buttons -->
-             @php
-                $message = urlencode(
-                "Assalamu'alaikum. \nPerkenalkan saya [Nama]. Saya tertarik untuk berdonasi dan ingin mengetahui lebih lanjut tentang program yayasan. Apakah saya bisa mendapatkan informasi lebih lanjut?\nTerima kasih."
-                );
-             @endphp
             <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank"
+                <a href="{{ url('/donation') }}" target="_blank"
                    class="group flex items-center gap-3 rounded-full bg-slate-900 px-8 py-4 font-semibold text-yellow-300 transition-all duration-300 hover:scale-105 hover:bg-slate-800">
                     <span>Donasi Sekarang</span>
                     <svg xmlns="http://www.w3.org/2000/svg"

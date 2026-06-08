@@ -169,7 +169,10 @@
     </div>
 
     <!-- CTA Footer -->
-     @include('components.cta-footer')
+     @include('components.cta-footer', [
+        'donator' => $totalDonators,
+        'program' => $totalCategories
+     ])
 </div>
 @include('components.footer')
 

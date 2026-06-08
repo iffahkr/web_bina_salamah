@@ -106,7 +106,7 @@
             </div>
         </div>
     </div>
-</section>
+    </section>
     <!-- Visi & Misi Section -->
     <div class="bg-linear-to-b from-gray-50 to-white border-y border-gray-100 py-16 lg:py-18">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -229,7 +229,10 @@
         </div>
     </div>
     <!-- CTA Section -->
-    @include('components.cta-footer')
+    @include('components.cta-footer', [
+        'donator' => $totalDonators,
+        'program' => $totalCategories
+    ])
 
     @include('components.footer')
 

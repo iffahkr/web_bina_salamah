@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ActivityCategoryController extends Controller
 {
+
     public function index() {
-        return redirect()->route('admin.activities.index');
+        $categories = ActivityCategory::all();
+
+        return view('admin.activity', compact('categories'));
     }
 
     public function store(Request $request) {

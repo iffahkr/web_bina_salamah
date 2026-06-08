@@ -19,6 +19,21 @@ class ActivityController extends Controller
         return view('admin.activity', compact('activities', 'categories'));
     }
 
+    public function create()
+    {
+        $categories = ActivityCategory::all();
+
+        return view('admin.activity.create', compact('categories'))->with('mode', 'activity');
+    }
+
+    public function edit(string $id)
+    {
+        $activity = Activity::findOrFail($id);
+        $categories = ActivityCategory::all();
+
+        return view('admin.activity.edit', compact('activity', 'categories'))->with('mode', 'activity');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

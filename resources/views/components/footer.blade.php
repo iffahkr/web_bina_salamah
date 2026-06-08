@@ -47,7 +47,7 @@
                 <ul class="mt-4 space-y-4">
                     <li class="flex flex-row text-sm">
                         <span class="mr-1.5">📍</span>
-                        <a href="#" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://maps.app.goo.gl/5ABUq3s9bWUGd3bF9" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             Jl. H. Dul No.28 RT005/005, Kelurahan Bojong Pd. Terong, Kecamatan Cipayung, Depok, Jawa Barat, Indonesia
                         </a>
                     </li>
