@@ -31,6 +31,20 @@
                     @method('PUT')
                         <div class="grid gap-6">
                             <div>
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Gambar Kegiatan</label>
+                                <div class="h-72 bg-gray-100 mb-4">
+                                    <img
+                                        src="{{ $activity->image ? asset('storage/activities/' . $activity->image) : 'https://via.placeholder.com/900x500?text=No+Image' }}"
+                                        alt="{{ $activity->name }}"
+                                        class="w-full h-full object-cover rounded-2xl"
+                                    >
+                                </div>
+                            </div>
+                            <div>
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Ganti Gambar Kegiatan</label>
+                                <input type="file" name="image" accept="image/*" class="p-3 w-full rounded-xl border border-gray-300 text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100">
+                            </div>
+                            <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Judul Kegiatan</label>
                                 <input type="text" name="title" value="{{ old('title', $activity->title) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                             </div>
@@ -53,10 +67,6 @@
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Waktu</label>
                                 <input type="time" name="time" value="{{ old('time', $activity->time) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            </div>
-                            <div>
-                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Gambar Baru (Opsional)</label>
-                                <input type="file" name="image" accept="image/*" class="p-3 w-full rounded-xl border border-gray-300 text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100">
                             </div>
                         </div>
                         <div>

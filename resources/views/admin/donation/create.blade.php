@@ -36,10 +36,6 @@
                                 <input type="text" name="phone_number" value="{{ old('phone_number') }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Contoh: 08123456789">
                             </div>
                             <div>
-                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Jumlah Donasi (Rp)</label>
-                                <input type="number" name="amount" value="{{ old('amount') }}" required min="1" class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Contoh: 100000">
-                            </div>
-                            <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Kategori Donasi</label>
                                 <select name="donation_category_id" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">Pilih Kategori</option>
@@ -47,6 +43,10 @@
                                         <option value="{{ $category->id }}" {{ old('donation_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div>
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Jumlah Donasi (Rp)</label>
+                                <input type="number" name="amount" value="{{ old('amount') }}" required min="1" class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Contoh: 100000">
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Metode Pembayaran</label>
@@ -58,7 +58,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Bukti Transfer</label>
+                                <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Bukti Transaksi</label>
                                 <input type="file" name="image" required accept="image/*" class="p-3 w-full rounded-xl border border-gray-300 text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100">
                             </div>
                             <div>

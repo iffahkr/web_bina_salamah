@@ -229,7 +229,7 @@
                 <div class="flex items-center justify-center min-h-screen p-4">
                     <div class="fixed inset-0 bg-slate-200/50 backdrop-blur-xs" @click="showDetailActivityModal=false"></div>
                     <div class="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden">
-                        <div class="flex items-center justify-between px-6 py-5 bg-amber-300/80">
+                        <div class="flex items-center justify-between px-6 py-5">
                             <h3 class="text-lg font-semibold text-gray-800">
                                 Detail Kegiatan
                             </h3>

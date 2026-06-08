@@ -85,12 +85,12 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100 text-sm">
-                                @forelse($donations as $don)
+                                @forelse($donations as $donation)
                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            @if($don->image)
-                                                <a href="{{ asset('storage/donations/' . $don->image) }}" target="_blank">
-                                                    <img src="{{ asset('storage/donations/' . $don->image) }}" class="w-12 h-12 rounded-xl object-cover border border-gray-200 shadow-sm hover:scale-105 transition duration-150" alt="Bukti Transfer">
+                                            @if($donation->image)
+                                                <a href="{{ asset('storage/donations/' . $donation->image) }}" target="_blank">
+                                                    <img src="{{ asset('storage/donations/' . $donation->image) }}" class="w-12 h-12 rounded-xl object-cover border border-gray-200 shadow-sm hover:scale-105 transition duration-150" alt="Bukti Transfer">
                                                 </a>
                                             @else
                                                 <div class="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center font-bold text-gray-400">
@@ -99,37 +99,37 @@
                                             @endif
                                         </td>
                                         <td class="px-6 py-4">
-                                            <div class="font-bold text-gray-800">{{ $don->name }}</div>
-                                            <div class="text-xs text-gray-400 mt-0.5">{{ $don->phone_number }}</div>
+                                            <div class="font-bold text-gray-800">{{ $donation->name }}</div>
+                                            <div class="text-xs text-gray-400 mt-0.5">{{ $donation->phone_number }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span class="px-2.5 py-1 text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-lg">
-                                                {{ $don->category->name }}
+                                                {{ $donation->category->name }}
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-extrabold text-gray-850">
-                                            Rp {{ number_format($don->amount, 0, ',', '.') }}
+                                            Rp {{ number_format($donation->amount, 0, ',', '.') }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-gray-600">
-                                            <div class="font-semibold bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5 inline-block text-[11px] mb-1">{{ $don->payment_method }}</div>
-                                            <div class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($don->date)->locale('id')->isoFormat('D MMM YYYY') }} - {{ \Carbon\Carbon::parse($don->time)->format('H:i') }}</div>
+                                            <div class="font-semibold bg-slate-100 border border-slate-200 rounded px-1.5 py-0.5 inline-block text-[11px] mb-1">{{ $donation->payment_method }}</div>
+                                            <div class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($donation->date)->locale('id')->isoFormat('D MMM YYYY') }} - {{ \Carbon\Carbon::parse($donation->time)->format('H:i') }}</div>
                                         </td>
                                         <td class="px-6 py-4 max-w-xs truncate text-gray-500">
-                                            {{ $don->notes ?? '-' }}
+                                            {{ $donation->notes ?? '-' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div class="flex justify-end items-center space-x-3">
                                                 <button
                                                     @click="
-                                                        detailDonation.image = '{{ $don->image ? asset('storage/donations/' . $don->image) : '' }}';
-                                                        detailDonation.name = '{{ addslashes($don->name) }}';
-                                                        detailDonation.phone_number = '{{ addslashes($don->phone_number) }}';
-                                                        detailDonation.category = '{{ addslashes($don->category->name) }}';
-                                                        detailDonation.amount = 'Rp {{ number_format($don->amount, 0, ',', '.') }}';
-                                                        detailDonation.payment_method = '{{ addslashes($don->payment_method) }}';
-                                                        detailDonation.date = '{{ \Carbon\Carbon::parse($don->date)->locale('id')->isoFormat('D MMM YYYY') }}';
-                                                        detailDonation.time = '{{ \Carbon\Carbon::parse($don->time)->format('H:i') }} WIB';
-                                                        detailDonation.notes = '{{ addslashes($don->notes ?? '-') }}';
+                                                        detailDonation.image = '{{ $donation->image ? asset('storage/donations/' . $donation->image) : '' }}';
+                                                        detailDonation.name = '{{ addslashes($donation->name) }}';
+                                                        detailDonation.phone_number = '{{ addslashes($donation->phone_number) }}';
+                                                        detailDonation.category = '{{ addslashes($donation->category->name) }}';
+                                                        detailDonation.amount = 'Rp {{ number_format($donation->amount, 0, ',', '.') }}';
+                                                        detailDonation.payment_method = '{{ addslashes($donation->payment_method) }}';
+                                                        detailDonation.date = '{{ \Carbon\Carbon::parse($donation->date)->locale('id')->isoFormat('D MMM YYYY') }}';
+                                                        detailDonation.time = '{{ \Carbon\Carbon::parse($donation->time)->format('H:i') }} WIB';
+                                                        detailDonation.notes = '{{ addslashes($donation->notes ?? '-') }}';
                                                         showDetailDonationModal = true;
                                                     "
                                                     class="text-rose-600 hover:text-rose-900 font-semibold transition-colors"
@@ -140,7 +140,7 @@
                                                     </svg>
                                                 </button>
                                                 <span class="text-gray-300">|</span>
-                                                <a href="{{ route('admin.donations.edit', $don) }}" class="text-indigo-600 hover:text-indigo-900 font-semibold transition-colors" title="Edit Donasi">
+                                                <a href="{{ route('admin.donations.edit', $donation) }}" class="text-indigo-600 hover:text-indigo-900 font-semibold transition-colors" title="Edit Donasi">
                                                     <svg data-slot="icon" class="size-5 text-center mx-auto text-blue-700" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
                                                     </svg>
@@ -152,8 +152,8 @@
                                                         editData.name = $el.dataset.name;
                                                         showDeleteModal = true;
                                                     "
-                                                    data-id="{{ $don->id }}"
-                                                    data-name="{{ $don->name }}"
+                                                    data-id="{{ $donation->id }}"
+                                                    data-name="{{ $donation->name }}"
                                                     class="text-rose-600 hover:text-rose-900 font-semibold transition-colors"
                                                 >
                                                     <svg data-slot="icon" class="size-5 text-center mx-auto text-orange-500" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
