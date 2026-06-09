@@ -48,12 +48,12 @@
             <img
                 src="{{ $activity->image ? asset('storage/activities/' . $activity->image) : asset('images/image-hero.jpeg') }}"
                 alt="{{ $activity->title }}"
-                class="relative h-125 w-full rounded-4xl object-cover shadow-2xl">
+                class="relative h-125 w-full rounded-4xl object-cover shadow-xl">
         </div>
     </div>
 </section>
 <!-- Content -->
-<section class="py-10">
+<section class="py-6">
     <div class="pl-28 max-w-6xl">
         <!-- Metadata -->
         <div class="p-4 sm:p-4 flex flex-wrap gap-5 text-sm text-slate-500">
@@ -76,58 +76,61 @@
             @endif
         </div>
         <article
-            class="p-4 mt-3">
-            <div class="mt-6 text-justify leading-8 text-slate-600">
+            class="p-4 flex flex-col justify-center items-center">
+            <div class="mt-3 mb-4 text-justify leading-8 text-slate-600">
                 {{ $activity->description }}
+            </div>
+            <div class="mt-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
             </div>
         </article>
     </div>
 </section>
-<!-- Related Activities -->
-<section class="pb-24">
-    <div class="mx-auto max-w-7xl px-6">
-        <div class="items-start">
-            <h2 class="mt-4 text-3xl font-bold text-slate-900">
-                Kegiatan Lain yang Kami Jalankan
-            </h2>
-        </div>
-        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            @php
-            $relatedActivities = \App\Models\Activity::where('id', '!=', $activity->id)->limit(3)->get(); @endphp
-            @forelse($relatedActivities as $related)
-                <a
-                    href="{{ route('activity.show', $related->id) }}"
-                    class="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <div class="overflow-hidden">
-                        <img
-                            src="{{ $related->image ? asset('storage/activities' . $related->image) : asset('images/image-hero.jpeg') }}"
-                            alt="{{ $related->title }}"
-                            class="h-56 w-full object-cover transition duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3
-                            class="mt-4 text-lg font-semibold text-slate-900 line-clamp-2">
-                            {{ $related->title }}
-                        </h3>
-                        <p
-                            class="mt-3 text-sm leading-6 text-slate-600 line-clamp-3">
-                            {{ $related->description }}
-                        </p>
-                        <div
-                            class="mt-5 flex items-center text-sm font-medium text-blue-600">
-                            Baca Selengkapnya
-                            <span class="ml-2 transition group-hover:translate-x-1">
-                                →
-                            </span>
+    <!-- Related Activities -->
+    <section class="pb-24">
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="items-start">
+                <h2 class="mt-4 text-2xl font-semibold text-slate-900">
+                    Kegiatan Lain yang Kami Jalankan
+                </h2>
+            </div>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                @forelse($relatedActivities as $related)
+                    <a
+                        href="{{ route('activity.show', $related->id) }}"
+                        class="group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        <div class="overflow-hidden">
+                            <img
+                                src="{{ $related->image ? asset('storage/activities/' . $related->image) : asset('images/image-hero.jpeg') }}"
+                                alt="{{ $related->title }}"
+                                class="h-56 w-full object-cover transition duration-500 group-hover:scale-105">
                         </div>
-                    </div>
-                </a>
-            @empty
-                <p class="col-span-full text-center text-slate-500">
-                    Tidak ada kegiatan lainnya.
-                </p>
-            @endforelse
-        </div>
+                        <div class="p-6">
+                            <h3
+                                class="mt-4 text-lg font-semibold text-slate-900 line-clamp-2">
+                                {{ $related->title }}
+                            </h3>
+                            <p
+                                class="mt-3 text-sm leading-6 text-slate-600 line-clamp-3">
+                                {{ $related->description }}
+                            </p>
+                            <div
+                                class="mt-5 flex items-center text-sm font-medium text-blue-600">
+                                Baca Selengkapnya
+                                <span class="ml-2 transition group-hover:translate-x-1">
+                                    →
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                @empty
+                    <p class="col-span-full text-center text-slate-500">
+                        Tidak ada kegiatan lainnya.
+                    </p>
+                @endforelse
+            </div>
     </div>
 </section>
 @include('components.footer')

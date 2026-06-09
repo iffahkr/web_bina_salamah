@@ -1,3 +1,8 @@
+@php
+    $message = urlencode(
+    "Assalamu'alaikum. \nPerkenalkan saya [Nama]. Saya tertarik untuk berdonasi dan ingin mengetahui lebih lanjut tentang program yayasan. Apakah saya bisa mendapatkan informasi lebih lanjut?\nTerima kasih."
+    );
+@endphp
 <footer class="bg-slate-950 pt-28 pb-10 px-6 lg:px-10">
     <div class="mx-auto max-w-7xl">
         <div class="grid gap-12 lg:grid-cols-4">
@@ -53,13 +58,13 @@
                     </li>
                     <li class="flex flex-row text-sm">
                         <span class="mr-1.5">📞</span>
-                        <a href="https://wa.me/6281294162019" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             +62 812 9416 2019
                         </a>
                     </li>
                     <li class="flex flex-row text-sm">
                         <span class="text-slate-400 mr-3">✉</span>
-                        <a href="mailto:binasalamah@gmail.com" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=binasalamah@gmail.com?text={{ $message }}" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             binasalamah@gmail.com
                         </a>
                     </li>
