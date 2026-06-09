@@ -9,10 +9,8 @@
             </span>
         </div>
     </x-slot>
-
     <div class="py-10 bg-slate-50 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
-
             <!-- Statistics Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Card Total Donasi -->
@@ -34,7 +32,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Card Total Donatur -->
                 <div class="relative overflow-hidden bg-linear-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg border border-blue-400/20 text-white p-6 transform hover:-translate-y-1 transition-all duration-300">
                     <div class="absolute -right-10 -bottom-10 opacity-15">
@@ -54,7 +51,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Card Total Kegiatan -->
                 <div class="relative overflow-hidden bg-linear-to-br from-amber-500 to-orange-600 rounded-2xl shadow-lg border border-amber-400/20 text-white p-6 transform hover:-translate-y-1 transition-all duration-300">
                     <div class="absolute -right-10 -bottom-10 opacity-15">
@@ -75,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Recent Lists -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Recent Donations -->
@@ -126,7 +121,6 @@
                         @endforelse
                     </div>
                 </div>
-
                 <!-- Recent Activities -->
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
@@ -182,7 +176,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </x-app-layout>

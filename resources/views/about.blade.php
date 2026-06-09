@@ -17,7 +17,7 @@
         'image' => asset('images/rihlah.jpg'),
     ])
     <!-- Introduction Section -->
-    <section class="relative overflow-hidden bg-linear-to-br from-yellow-50 via-white to-blue-50 py-24">
+    <section class="relative overflow-hidden bg-linear-to-br from-yellow-50 via-white to-blue-50 py-18">
     <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-200/20 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -108,7 +108,7 @@
     </div>
     </section>
     <!-- Visi & Misi Section -->
-    <div class="bg-linear-to-b from-gray-50 to-white border-y border-gray-100 py-16 lg:py-18">
+    <div class="bg-linear-to-b from-gray-50 to-white border-y border-gray-100 py-8 lg:py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
@@ -121,7 +121,7 @@
                 </p>
             </div>
             <!-- Image Grid -->
-             <div class="grid grid-cols-3 gap-3 py-8 sm:py-12 items-center">
+             <div class="grid grid-cols-3 gap-3 py-4 sm:py-6 items-center">
                 <img
                     src="{{ asset('images/section-2.jpeg') }}"
                     class="h-72 w-50 object-cover rounded-2xl shadow-2xl justify-self-end translate-x-8">

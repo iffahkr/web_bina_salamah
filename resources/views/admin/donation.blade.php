@@ -41,7 +41,6 @@
                 </div>
             </div>
         </x-slot>
-
         <div class="py-10 bg-slate-50 min-h-screen">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <!-- Success Alert -->
@@ -226,7 +225,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Detail Donation Modal -->
             <div x-show="showDetailDonationModal" class="fixed inset-0 z-50 overflow-y-auto" style="display:none;">
                 <div class="flex items-center justify-center min-h-screen p-4">
