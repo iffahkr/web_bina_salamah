@@ -49,7 +49,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-blue-100 uppercase tracking-wider">Total Donasi</p>
+                            <p class="text-sm font-medium text-blue-100 uppercase tracking-wider">Total Donasi Masuk</p>
                             <h3 class="text-2xl font-bold mt-1">{{ number_format($totalDonators, 0, ',', '.') }}x Donasi</h3>
                         </div>
                     </div>
