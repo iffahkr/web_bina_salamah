@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
+                {{ __('Ringkasan Dashboard') }}
             </h2>
             <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full border border-gray-200 shadow-sm font-medium">
                 {{ now()->locale('id')->isoFormat('dddd, D MMMM YYYY') }}
