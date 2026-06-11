@@ -8,7 +8,7 @@ class ActivityController extends Controller
 
     public function index()
     {
-        $activities = Activity::all();
+        $activities = Activity::get();
         return view('activity.index', compact('activities'));
     }
 

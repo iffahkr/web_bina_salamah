@@ -21,13 +21,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($activities as $activity)
                 <x-card-news
-                    title="{{ $activity->title }}"
-                    description="{{ $activity->description }}"
-                    location="{{ $activity->location }}"
-                    date="{{ $activity->date ? \Carbon\Carbon::parse($activity->date)->format('d M Y') : 'Tanggal tidak tersedia' }}"
-                    time="{{ $activity->time }}"
-                    image="{{ asset('storage/activities/' . $activity->image) ?? asset('images/image-hero.jpeg') }}"
-                    href="{{ route('activity.show', $activity->id) }}"
+                    :title="$activity->title"
+                    :description="$activity->description"
+                    :location="$activity->location"
+                    :date="$activity->date ? \Carbon\Carbon::parse($activity->date)->format('d M Y') : 'Tanggal tidak tersedia'"
+                    :time="$activity->time"
+                    :image="asset('storage/activities/' . $activity->image) ?? asset('images/image-hero.jpeg')"
+                    :href="route('activity.show', $activity->id)"
                 />
             @endforeach
         </div>
