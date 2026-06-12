@@ -2,8 +2,8 @@
     <nav aria-label="Global" class="flex items-center justify-between p-1 lg:px-15">
       <div class="flex lg:flex-1">
         <a href="{{ url('/') }}" class="-m-1.5 p-1.5 pl-10">
-          <span class="sr-only">Bina Salamah</span>
-          <img src="{{ asset('images/logo-1.png') }}" alt="Bina Salamah" class="w-20 h-20" />
+          <span class="sr-only">{{ config('app.name') }}</span>
+          <img src="{{ asset('images/logo-1.png') }}" alt="{{ config('app.name') }}" class="w-20 h-20" />
         </a>
       </div>
       <div class="flex lg:hidden">

@@ -11,7 +11,7 @@
                 <div class="flex items-center gap-4">
                     <img
                         src="{{ asset('images/logo-1.png') }}"
-                        alt="Yayasan Bina Salamah"
+                        alt="{{ config('app.name') }}"
                         class="h-20 w-20 bg-white/80 rounded-lg p-2 object-contain">
                     <div>
                         <h2 class="text-xl font-bold text-white">
