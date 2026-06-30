@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
-            $table->decimal('amount', 10, 2);
+            $table->bigInteger('amount');
             $table->string('payment_method');
             $table->date('date');
             $table->time('time');

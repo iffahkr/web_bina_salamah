@@ -1,3 +1,8 @@
+@php
+    $message = urlencode(
+    "Assalamu'alaikum. \nPerkenalkan saya [Nama]. Saya tertarik untuk berdonasi dan ingin mengetahui lebih lanjut tentang program yayasan. Apakah saya bisa mendapatkan informasi lebih lanjut?\nTerima kasih."
+    );
+@endphp
 <footer class="bg-slate-950 pt-28 pb-10 px-6 lg:px-10">
     <div class="mx-auto max-w-7xl">
         <div class="grid gap-12 lg:grid-cols-4">
@@ -6,7 +11,7 @@
                 <div class="flex items-center gap-4">
                     <img
                         src="{{ asset('images/logo-1.png') }}"
-                        alt="Yayasan Bina Salamah"
+                        alt="{{ config('app.name') }}"
                         class="h-20 w-20 bg-white/80 rounded-lg p-2 object-contain">
                     <div>
                         <h2 class="text-xl font-bold text-white">
@@ -47,19 +52,19 @@
                 <ul class="mt-4 space-y-4">
                     <li class="flex flex-row text-sm">
                         <span class="mr-1.5">📍</span>
-                        <a href="#" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://maps.app.goo.gl/5ABUq3s9bWUGd3bF9" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             Jl. H. Dul No.28 RT005/005, Kelurahan Bojong Pd. Terong, Kecamatan Cipayung, Depok, Jawa Barat, Indonesia
                         </a>
                     </li>
                     <li class="flex flex-row text-sm">
                         <span class="mr-1.5">📞</span>
-                        <a href="https://wa.me/6281294162019" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://wa.me/6281294162019?text={{ $message }}" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             +62 812 9416 2019
                         </a>
                     </li>
                     <li class="flex flex-row text-sm">
                         <span class="text-slate-400 mr-3">✉</span>
-                        <a href="mailto:binasalamah@gmail.com" class="text-slate-400 hover:text-yellow-300 transition">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=binasalamah@gmail.com?text={{ $message }}" target="_blank" class="text-slate-400 hover:text-yellow-300 transition">
                             binasalamah@gmail.com
                         </a>
                     </li>

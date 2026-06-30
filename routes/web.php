@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -18,8 +19,10 @@ Route::get('/info/{id}', [ActivityHomeController::class, 'show'])->name('info.sh
 Route::get('/kegiatan', [FrontendActivityController::class, 'index'])->name('activity.index');
 Route::get('/kegiatan/{id}', [FrontendActivityController::class, 'show'])->name('activity.show');
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/donation', function() {
+    return view('donation');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -32,11 +35,11 @@ Route::prefix('admin')->group(function () {
         return redirect()->route('register');
     });
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-        
+
         Route::resource('activities', AdminActivityController::class)->names([
             'index' => 'admin.activities.index',
             'create' => 'admin.activities.create',

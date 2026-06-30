@@ -19,6 +19,21 @@ class DonationController extends Controller
         return view('admin.donation', compact('donations', 'categories'));
     }
 
+    public function create()
+    {
+        $categories = DonationCategory::all();
+
+        return view('admin.donation.create', compact('categories'))->with('mode', 'donation');
+    }
+
+    public function edit(string $id)
+    {
+        $donation = Donation::findOrFail($id);
+        $categories = DonationCategory::all();
+
+        return view('admin.donation.edit', compact('donation', 'categories'))->with('mode', 'donation');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

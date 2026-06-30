@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $info->name }} | Yayasan Bina Salamah</title>
+    <title>{{ $info->name }} | {{ config('app.name') }}</title>
 
     <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -71,7 +71,7 @@
         <div class="mt-12 flex justify-center">
             <a
                 href="{{ url('/') }}"
-                class="inline-flex items-center gap-2 rounded-full bg-yellow-300 px-6 py-3 text-sm font-medium text-gray-900 shadow-md transition hover:bg-amber-300">
+                class="inline-flex items-center gap-2 rounded-full border bg-white border-yellow-200 px-6 py-3 text-sm font-medium text-gray-900 shadow-md transition hover:bg-amber-200">
 
                 <svg xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"

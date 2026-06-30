@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayasan Bina Salamah</title>
+    <title>{{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="icon" href="{{ asset('images/logo-1.png') }}" type="image/png">
@@ -55,7 +55,7 @@
             </div>
         <div class="-mt-40 z-10 flex flex-wrap mx-auto justify-center max-w-7xl py-7 lg:px-5 sm:flex-row gap-2">
             <x-card-stats
-            title="Donatur Aktif"
+            title="Donatur Sementara"
             :number="$totalDonators">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-10 size-20 text-center mx-auto text-blue-700/50">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
@@ -79,7 +79,7 @@
         <div class="mx-3 py-6 sm:py-7 lg:py-7">
             <div class="text-center justify-between">
                 <div class="mx-20 items-start justify-center gap-x-6">
-                    <p class="text-medium mx-auto font-small leading-4 text-pretty text-gray-500 sm:text-lg/7">Kami mendapatkan bantuan dari berbagai pihak donatur. Angka tersebut adalah hasil sementara dari data donatur dan donasi kami selama satu bulan terakhir serta kegiatan yang telah kami lakukan.</p>
+                    <p class="text-medium mx-auto font-small leading-4 text-pretty text-gray-500 sm:text-lg/7">Kami mendapatkan bantuan dari berbagai pihak donatur. Angka tersebut adalah hasil sementara dari data donatur dan donasi kami selama satu tahun terakhir serta kegiatan yang telah kami lakukan.</p>
                 </div>
             </div>
         </div>
@@ -169,7 +169,10 @@
     </div>
 
     <!-- CTA Footer -->
-     @include('components.cta-footer')
+     @include('components.cta-footer', [
+        'donator' => $totalDonators,
+        'program' => $totalCategories
+     ])
 </div>
 @include('components.footer')
 
