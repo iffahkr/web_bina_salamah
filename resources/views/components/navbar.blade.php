@@ -20,7 +20,7 @@
         <a href="{{ url('/about') }}" class="text-base/7 font-semibold  text-gray-900"><h5>Tentang Kami</h5></a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="{{ url('/donation') }}" target="_blank" class="rounded-full inline-flex gap-2 px-3 py-2 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-auto focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
+        <a href="{{ url('/donation') }}" class="rounded-full inline-flex gap-2 px-3 py-2 text-sm text-gray-900 font-medium justify-center relative items-center p-1 w-auto focus:outline-2 focus:outline-offset-2 focus:outline-yellow-500 bg-yellow-300 hover:bg-amber-300 hover:text-gray-800">
             <span>Donasi sekarang</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="rounded-full border p-1 size-7">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
