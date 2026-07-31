@@ -44,6 +44,12 @@ class ActivityController extends Controller
             'time' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'activity_category_id' => 'required|exists:activity_categories,id',
+        ],
+        [
+            'image.required' => 'Silakan pilih gambar.',
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            'image.max' => 'Ukuran gambar maksimal 2 MB.'
         ]);
 
         if ($validator->fails()) {
@@ -79,6 +85,11 @@ class ActivityController extends Controller
             'time' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'activity_category_id' => 'required|exists:activity_categories,id',
+        ],
+        [
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            'image.max' => 'Ukuran gambar maksimal 2 MB.'
         ]);
 
         if ($validator->fails()) {

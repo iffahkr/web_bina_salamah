@@ -31,9 +31,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return redirect()->route('login');
     });
-    Route::get('/register', function () {
-        return redirect()->route('register');
-    });
+    // Route::get('/register', function () {
+    //     return redirect()->route('register');
+    // });
 
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
