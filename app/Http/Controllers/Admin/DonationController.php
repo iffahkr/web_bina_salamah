@@ -38,7 +38,7 @@ class DonationController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:15',
+            'phone_number' => 'required|regex:/^[0-9]{10,15}$/',
             'amount' => 'required|integer|min:1',
             'payment_method' => 'required|string|max:255',
             'date' => 'required|date',
@@ -46,6 +46,14 @@ class DonationController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'notes' => 'nullable|string|max:255',
             'donation_category_id' => 'required|exists:donation_categories,id',
+        ],
+        [
+            'image.required' => 'Silakan pilih gambar.',
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            'image.max' => 'Ukuran gambar maksimal 2 MB.',
+            'phone_number.regex' => 'Nomor telepon harus berupa angka dan memiliki panjang antara 10 hingga 15 digit.',
+            'amount.integer' => 'Jumlah donasi harus berupa angka.',
         ]);
 
         if ($validator->fails()) {
@@ -77,7 +85,7 @@ class DonationController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:15',
+            'phone_number' => 'required|regex:/^[0-9]{10,15}$/',
             'amount' => 'required|integer|min:1',
             'payment_method' => 'required|string|max:255',
             'date' => 'required|date',
@@ -85,6 +93,13 @@ class DonationController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'notes' => 'nullable|string|max:255',
             'donation_category_id' => 'required|exists:donation_categories,id',
+        ],
+        [
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            'image.max' => 'Ukuran gambar maksimal 2 MB.',
+            'phone_number.regex' => 'Nomor telepon harus berupa angka dan memiliki panjang antara 10 hingga 15 digit.',
+            'amount.integer' => 'Jumlah donasi harus berupa angka.',
         ]);
 
         if ($validator->fails()) {

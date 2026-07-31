@@ -14,17 +14,6 @@
 
     <div class="py-10 bg-slate-50 min-h-screen">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            @if($errors->any())
-                <div class="mb-6 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-rose-800 shadow-sm">
-                    <p class="text-sm font-bold">Terjadi kesalahan input:</p>
-                    <ul class="mt-2 list-disc pl-5 text-sm">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
                 <form action="{{ route('admin.activities.update', $activity->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
@@ -43,10 +32,34 @@
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Ganti Gambar Kegiatan</label>
                                 <input type="file" name="image" accept="image/*" class="p-3 w-full rounded-xl border border-gray-300 text-sm file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:px-3 file:py-1 file:text-xs file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100">
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('image')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Judul Kegiatan</label>
                                 <input type="text" name="title" value="{{ old('title', $activity->title) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('title')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Kategori</label>
@@ -55,18 +68,66 @@
                                         <option value="{{ $category->id }}" {{ old('activity_category_id', $activity->activity_category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('activity_category_id')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Lokasi</label>
                                 <input type="text" name="location" value="{{ old('location', $activity->location) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('location')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Tanggal</label>
                                 <input type="date" name="date" value="{{ old('date', $activity->date) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('date')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">Waktu</label>
                                 <input type="time" name="time" value="{{ old('time', $activity->time) }}" required class="p-3 w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <div class="flex flex-row gap-2 mt-1">
+                                    @error('time')
+                                    <div class="text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-red-500 text-sm">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div>

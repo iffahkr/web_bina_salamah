@@ -36,15 +36,6 @@
             <x-primary-button class="ms-3 px-35">
                 {{ __('Log in') }}
             </x-primary-button>
-
-            <div class="mt-3 flex flex-row">
-                @if (Route::has('password.request'))
-                <p class="text-sm text-gray-600">Don't have an account yet?</p>
-                <a class="ml-1 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ url('/register') }}">
-                    Register here
-                </a>
-            @endif
-            </div>
         </div>
     </form>
 </x-guest-layout>
