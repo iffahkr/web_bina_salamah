@@ -22,8 +22,6 @@ The application provides a public-facing website and an administrative dashboard
 | MySQL          | Relational database                |
 | Blade          | Server-side templating             |
 | Tailwind CSS   | User interface styling             |
-| JavaScript     | Interactive frontend functionality |
-| Vite           | Frontend asset bundling            |
 | Laravel Breeze | Admin authentication               |
 
 ## Getting Started
@@ -131,16 +129,6 @@ For frontend development with Vite hot reload, run the following command in a se
 ```bash
 npm run dev
 ```
-
-## Application Routes
-
-| Route          | Description              |
-| -------------- | ------------------------ |
-| `/`            | Homepage                 |
-| `/kegiatan`    | Foundation activities    |
-| `/about`       | About the foundation     |
-| `/admin/login` | Admin login              |
-| `/dashboard`   | Administrative dashboard |
 
 ## Project Background
 
